@@ -13,13 +13,12 @@ script:
 deploy:
     provider: elasticbeanstalk
     region: "us-west-1"
-    app: "docker"
-    env: "Docker-env"
+    app: "dockerx"
+    env: "Dockerx-env"
     bucket_name: "elasticbeanstalk-us-west-1-316297602136"
-    bucket_path: "docker"
+    bucket_path: "dockerx"
     on:
         branch: master
-
-access_key_id: $AWS_Access_Key
-secret_access_key: $AWS_Secret_Key
+    access_key_id: $AWS_Access_Key
+    secret_access_key: $AWS_Secret_Key
 
