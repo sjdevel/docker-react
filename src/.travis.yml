@@ -1,0 +1,25 @@
+language: generic 
+sudo: required
+
+services:
+    - docker
+
+before_install:
+    - docker build -t sjdevel/docker-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true sjdevel/docker-react npm run test
+
+deploy:
+    provider: elasticbeanstalk
+    region: "us-west-1"
+    app: "docker react"
+    env: "DockerReact-env"
+    bucket_name: "elasticbeanstalk-us-west-1-316297602136"
+    bucket_path: "docker react"
+    on:
+        branch: master
+
+access_key_id: $AWS_Access_Key
+secret_access_key: $AWS_Secret_Key
+
